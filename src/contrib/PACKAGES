@@ -8,12 +8,12 @@ MD5sum: d34e37a4e2455d5929486a236351a462
 NeedsCompilation: no
 
 Package: loadeR
-Version: 0.0-1
-Depends: R(>= 3.0.0), loadeR.java, rJava
-Imports: utils, abind, RCurl, fields
-Suggests: downscaleR, ecomsUDG.Raccess
+Version: 1.1.0
+Depends: R(>= 3.0.0), rJava, loadeR.java
+Imports: utils, abind, RCurl
+Suggests: loadeR.ECOMS, loadeR.2nc, downscaleR
 License: file LICENSE
-MD5sum: a736630833925dd27aefbe789cba0c53
+MD5sum: 255854fdbe8381d4b744d4d532875ab0
 NeedsCompilation: no
 
 Package: transformeR
