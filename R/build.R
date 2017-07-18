@@ -51,3 +51,33 @@ setRepositories()
 
 setwd("/media/maialen/work/WORK/GIT/mopa/")
 tools::write_PACKAGES(".", type="win.binary")
+
+
+#####################WINDOWS AND MAC#####################
+contribDir <- "src/contrib/"
+rVersion <- paste(unlist(getRversion())[1:2], collapse = ".")
+dirgz <- "/media/maialen/work/WORK/GIT/"
+binPaths <- list(
+  win.binary = file.path("bin/windows/contrib", rVersion),
+  mac.binary = file.path("bin/macosx/contrib", rVersion),
+  mac.binary.mavericks = file.path("bin/macosx/mavericks/contrib", rVersion),
+  mac.binary.leopard = file.path("bin/macosx/leopard/contrib", rVersion)
+)
+dir <- getwd()
+binPaths <- lapply(binPaths, function(x) file.path(dir,x))
+lapply(binPaths, function(path) {
+  dir.create(path, recursive = TRUE)
+})
+
+file.copy(
+  list.files(file.path(contribDir), pattern = "tar.gz", full.names = T),
+  file.path(binPaths, "sashimi_1.0.tar.gz")
+)
+
+tools::write_PACKAGES(contribDir, type = "source")
+lapply(binPaths, function(path) {
+  tools::write_PACKAGES(path, subdirs = T, verbose = T)
+})
+
+tools::write_PACKAGES(binPaths$win.binary, type = "win.binary", verbose = T)
+
