@@ -1,7 +1,8 @@
 Package: downscaleR
 Version: 2.0.3
 Depends: R(>= 3.1.0), transformeR(>= 0.0.9)
-Imports: abind, utils, RCurl, fields, MASS, evd, parallel, grDevices, graphics, stats, magrittr
+Imports: abind, utils, RCurl, fields, MASS, evd, parallel, grDevices, graphics,
+         stats, magrittr
 Suggests: loadeR, loadeR.ECOMS, visualizeR
 License: GPL (>= 3)
 MD5sum: d34e37a4e2455d5929486a236351a462
@@ -19,7 +20,8 @@ NeedsCompilation: no
 Package: transformeR
 Version: 0.0-14
 Depends: R(>= 3.1.0)
-Imports: abind, akima, fields, graphics, grDevices, magrittr, parallel, RcppEigen, sp, stats, utils, raster
+Imports: abind, akima, fields, graphics, grDevices, magrittr, parallel,
+         RcppEigen, sp, stats, utils, raster
 Suggests: downscaleR, loadeR, loadeR.ECOMS, visualizeR
 License: file LICENSE
 MD5sum: 8c2f3fffa96bea460253ef9dac1eaa01
