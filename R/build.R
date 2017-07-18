@@ -24,14 +24,14 @@ drat::insertPackage(pkg,  # Path to src
 
 ## Push Repository onto GitHub
 
-# Open repository
-repo = git2r::repository(getwd())
-
-# Authorize (not secure, need SSH key)
-cred = git2r::cred_user_pass("miturbide", "lukinvela9&9")
-
-# Push changes in local repository to GitHub
-git2r::push(repo, "origin", "refs/heads/gh-pages", credentials = cred)
+# # Open repository
+# repo = git2r::repository(getwd())
+# 
+# # Authorize (not secure, need SSH key)
+# cred = git2r::cred_user_pass("", "")
+# 
+# # Push changes in local repository to GitHub
+# git2r::push(repo, "origin", "refs/heads/gh-pages", credentials = cred)
 
 # Add the repository to local R session for use with install.packages()
 # drat::addRepo("climate4R","http://miturbide.github.io/climate4R")
