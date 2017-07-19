@@ -1,21 +1,26 @@
 library(drat)
 
+# https://rstudio.github.io/packrat/custom-repos.html
+
 # BUILD THE MASTER VERSION OF THE PACKAGE IN LOCAL
 # switch to branch master
 
 # BUILD PACKAGES FROM TERMINAL
 # R CMD build <pck>; R CMD check <pkg>
 
-# ADD PACKAGE TO REPO
-pkg <- "/media/maialen/work/WORK/GIT/transformeR_0.0.14.tar.gz"
-pkg <- "/media/maialen/work/WORK/GIT/loadeR_1.1.0.tar.gz"
-pkg <- "/media/maialen/work/WORK/GIT/downscaleR_2.0.3.tar.gz"
+# ADD PACKAGES TO REPO
+pkgnames <- c("transformeR_0.0.14.tar.gz", "loadeR_1.1.0.tar.gz", "downscaleR_2.0.3.tar.gz")
+buildir <- "/media/maialen/work/WORK/GIT"
+repodir <- getwd()
+pkgs <- file.path(buildir, pkgnames)
 
-wd <- getwd()
-drat::insertPackage(pkg,  # Path to src 
-                    repodir = wd,                   # Location of git repo: not need if dratRepo set
-                    action = "prune",                                  # Remove old package version
-                    commit = T)                                      # Commit to repo
+lapply(pkgs, function(path){
+  drat::insertPackage(pkgs[path],  # Path to src 
+                      repodir = repodir,                   # Location of git repo: not need if dratRepo set
+                      action = "prune",                                  # Remove old package version
+                      commit = T)                                      # Commit to repo
+})
+
 
 drat::pruneRepo(getwd(), pkg = c("loadeR", "downscaleR", "transformeR"))
 
@@ -39,11 +44,11 @@ binMac <- list(
   mac.binary.leopard = file.path("bin/macosx/leopard/contrib", rVersion)
 )
 
-# dir <- getwd()
-# binPaths <- lapply(binPaths, function(x) file.path(dir,x))
-# lapply(binPaths, function(path) {
-#   dir.create(path, recursive = TRUE)
-# })
+dir <- getwd()
+binPaths <- lapply(binWin, function(x) file.path(dir,x))
+lapply(binPaths, function(path) {
+  dir.create(path, recursive = TRUE)
+})
 
 binPkg <- function(contribDir, binPaths, type = c("win.binary", "mac.binary")){
   files <- list.files(contribDir, pattern = "tar.gz")
@@ -72,4 +77,5 @@ lapply(binPaths, function(path) {
 
 download.file("https://github.com/SantanderMetGroup/downscaleR/archive/v2.0.3.zip",
               destfile = "bin/windows/contrib/3.4/v2.0.3.zip")
-write_PACKAGES("bin/windows/contrib/3.4/", type = "win.binary")
+
+tools::write_PACKAGES("bin/windows/contrib/3.4/", type = "win.binary")
