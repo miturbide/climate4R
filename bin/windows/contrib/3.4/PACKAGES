@@ -1,0 +1,8 @@
+Package: loadeR
+Version: 1.1.0
+Depends: R(>= 3.0.0), rJava, loadeR.java
+Imports: utils, abind, RCurl
+Suggests: loadeR.ECOMS, loadeR.2nc, downscaleR
+License: file LICENSE
+MD5sum: 255854fdbe8381d4b744d4d532875ab0
+NeedsCompilation: no
