@@ -14,7 +14,7 @@ Depends: R(>= 3.0.0), rJava, loadeR.java
 Imports: utils, abind, RCurl
 Suggests: loadeR.ECOMS, loadeR.2nc, downscaleR
 License: file LICENSE
-MD5sum: 255854fdbe8381d4b744d4d532875ab0
+MD5sum: 8c353cfc6404a96e0f1f151e21f89ea7
 NeedsCompilation: no
 
 Package: transformeR
