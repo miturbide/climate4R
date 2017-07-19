@@ -40,16 +40,48 @@ drat::pruneRepo(getwd(), pkg = pkgnames0)
 install.packages("loadeR", repos = "http://miturbide.github.io/climate4R")
 
 
-#CREATE WINDOWS PACKAGES
-contribDir <- "src/contrib/"
+#DOWNLOAD WINDOWS SOURCE PACKAGES
+
 rVersion <- paste(unlist(getRversion())[1:2], collapse = ".")
 
-binPaths <- list(
-  win.binary = file.path("bin/windows/contrib", rVersion),
+winPaths <- list(
+  win.binary = file.path("bin/windows/contrib", rVersion)
+)
+
+macPaths <- list(
   mac.binary = file.path("bin/macosx/contrib", rVersion),
   mac.binary.mavericks = file.path("bin/macosx/mavericks/contrib", rVersion),
   mac.binary.leopard = file.path("bin/macosx/leopard/contrib", rVersion)
 )
+
+pkgnames <- c("transformeR_0.0.14.zip", "loadeR_1.1.0.zip", "loadeR.java_1.0-0.zip", "downscaleR_2.0.3.zip")
+pkgs <- file.path(tempdir(), pkgnames)
+
+download.file("https://github.com/SantanderMetGroup/transformeR/archive/v0.0.14.zip", 
+              file.path(tempdir(), pkgnames[1]))
+download.file("https://github.com/SantanderMetGroup/loadeR/archive/v1.1.0.zip", 
+              file.path(tempdir(), pkgnames[2]))
+download.file("https://github.com/SantanderMetGroup/loadeR.java/archive/v1.0-0.zip",
+              file.path(tempdir(), pkgnames[3]))
+download.file("https://github.com/SantanderMetGroup/downscaleR/archive/v2.0.3.zip", 
+              file.path(tempdir(), pkgnames[4]))
+
+
+lapply(winPaths, function(path){
+  lapply(pkgnames, function(pkg){
+    file.copy(file.path(tempdir(), pkg), file.path(path, pkg))
+  })
+})
+
+lapply(winPaths, function(path) {
+write_PACKAGES(path, type = "win.binary")
+})
+
+lapply(macPaths, function(path) {
+  write_PACKAGES(path, type = "mac.binary")
+})
+#CREATE WINDOWS PACKAGES
+
 
 # dir <- getwd()
 # binPaths <- lapply(binPaths, function(x) file.path(dir,x))
