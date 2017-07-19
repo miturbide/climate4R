@@ -5,7 +5,7 @@ Imports: abind, utils, RCurl, fields, MASS, evd, parallel, grDevices, graphics,
          stats, magrittr
 Suggests: loadeR, loadeR.ECOMS, visualizeR
 License: GPL (>= 3)
-MD5sum: d34e37a4e2455d5929486a236351a462
+MD5sum: 96ef5ac5580142576d2a09990be7825c
 NeedsCompilation: no
 
 Package: loadeR
