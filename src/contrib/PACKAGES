@@ -24,5 +24,5 @@ Imports: abind, akima, fields, graphics, grDevices, magrittr, parallel,
          RcppEigen, sp, stats, utils, raster
 Suggests: downscaleR, loadeR, loadeR.ECOMS, visualizeR
 License: file LICENSE
-MD5sum: d05dd5c3ed80926054c6d3e2128ea4cc
+MD5sum: 091de310016bb25a63f234a17486a8d2
 NeedsCompilation: no
